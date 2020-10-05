@@ -1,6 +1,11 @@
-import React from "react";
-const userReducer = (state, action) => {
-  return <h1>state</h1>;
-};
+import { FETCH_USERS } from "../actions/users";
 
-export default userReducer;
+export default function (state = [], action) {
+  switch (action.type) {
+    case FETCH_USERS:
+      console.log(action);
+      return [action.payload.data, ...state];
+    default:
+      return state;
+  }
+}
